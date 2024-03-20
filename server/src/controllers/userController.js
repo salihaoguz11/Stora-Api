@@ -21,6 +21,23 @@ module.exports = {
       data,
     });
   },
+  create: async (req, res) => {
+    const data = await User.create(req.body);
+    res.status(201).send({
+      error: false,
+      body: req.body,
+      data,
+    });
+  },
+  delete: async (req, res) => {
+    // ! modellerin isimlerini tekil vermek daha iyi
+
+    const data = await User.deleteOne({ _id: req.params.id });
+    res.status(data.deletedCount ? 204 : 404).send({
+      error: !data.deletedCount,
+      data,
+    });
+  },
 
   // ***  login - logout ***
 
