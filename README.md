@@ -9,7 +9,7 @@ In this project, you will create a basic Clarus Store API using Express.js as th
 Your project directory structure might look like this:
 
 ```
-clarus-store/
+store/
   ├── index.js          // Express.js server setup
   ├── .env
   ├── src

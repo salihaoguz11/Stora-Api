@@ -12,8 +12,6 @@ const User = require("../controllers/userController");
 // Login -logout
 router.post("/login", User.login);
 router.all("/logout", User.logout);
-router.post("/", User.create);
-router.all("/:id", User.delete);
 
 // List & Read
 router.route("/").get(User.list);

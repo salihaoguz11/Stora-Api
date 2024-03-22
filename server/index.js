@@ -27,29 +27,16 @@ const { dbConnection } = require("./src/dbConnection");
 dbConnection();
 
 /* ------------------------------------------------------- */
-// Middlewares:
+
 app.use(express.json());
+
 // SessionsCookies:
+const session = require("cookie-session");
 app.use(require("cookie-session")({ secret: process.env.SECRET_KEY }));
 
-// Login/Logout Control Middleware
-// app.use(async (req, res, next) => {
-//   const Personnel = require("./src/models/personnel.model");
+// Middlewares:
+app.use(require("./src/middlewares/userControl"));
 
-//   req.isLogin = false;
-
-//   if (req.session?.id) {
-//     const user = await Personnel.findOne({ _id: req.session.id });
-
-//     // if (user && user.password == req.session.password) {
-//     //     req.isLogin = true
-//     // }
-//     req.isLogin = user && user.password == req.session.password;
-//   }
-//   console.log("isLogin: ", req.isLogin);
-
-//   next();
-// });
 /* ------------------------------------------------------- */
 // Routes:
 // HomePath:
@@ -62,6 +49,7 @@ app.all("/", (req, res) => {
   });
 });
 
+/* ------------------------------------------------------- */
 // Route işlemleri
 app.use(require("./src/routes/productsRoute"));
 
