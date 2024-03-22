@@ -52,8 +52,8 @@ app.all("/", (req, res) => {
 /* ------------------------------------------------------- */
 // Route işlemleri
 app.use(require("./src/routes/productsRoute"));
-
 app.use("/users", require("./src/routes/userRoutes"));
+app.use("/admin", require("./src/routes/adminRoutes"));
 
 /* ------------------------------------------------------- */
 

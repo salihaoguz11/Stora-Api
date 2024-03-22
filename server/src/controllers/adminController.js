@@ -16,14 +16,6 @@ module.exports.Category = {
     });
   },
 
-  read: async (req, res) => {
-    const data = await Category.findOne({ _id: req.params.id });
-    res.status(202).send({
-      error: false,
-      data,
-    });
-  },
-
   update: async (req, res) => {
     // süslü içerisinde olmaz. default hali süslü, ilk alan koşul, ikinci alan yeni veri - süslü parantezler sırası ile filter, query, options
     const data = await Category.updateOne({ _id: req.params.id }, req.body, {
