@@ -30,12 +30,17 @@ dbConnection();
 
 app.use(express.json());
 
-// SessionsCookies:
+//* SessionsCookies:
 const session = require("cookie-session");
 app.use(require("cookie-session")({ secret: process.env.SECRET_KEY }));
 
-// Middlewares:
+//* Cors integration
+const getCors = require("./src/middlewares/getCors");
+
+//* Middlewares:
 app.use(require("./src/middlewares/userControl"));
+// Filter, Search, Sort, Pagination:  Bu routeların üstünde olmalıdır.
+app.use(require("./src/middlewares/findSearchSortPage"));
 
 /* ------------------------------------------------------- */
 // Routes:

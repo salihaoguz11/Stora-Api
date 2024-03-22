@@ -5,7 +5,6 @@
 
 const router = require("express").Router();
 
-const { products, categories } = require("../controllers/productController");
 const { Product, Category } = require("../controllers/adminController");
 
 //? long way
@@ -27,6 +26,7 @@ router.route("/categories").post(isAdmin, Category.create);
 router
   .route("/categories/:id")
   .put(isAdmin, Category.update)
+  //   .delete(auth.isAdmin, Category.delete);
   .delete(isAdmin, Category.delete);
 
 module.exports = router;
